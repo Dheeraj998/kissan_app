@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1016118821291",
+    "project_id": "kisan-bf8ec",
+    "storage_bucket": "kisan-bf8ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016118821291:android:61d95fe1d695d4684452ee",
+        "android_client_info": {
+          "package_name": "com.example.kisan_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016118821291-v4jqba42pr4d0aqdf12cd71mjahis1fn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPc0VLZjK3W2jFw5SWW9aeftu9HU22mHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016118821291-v4jqba42pr4d0aqdf12cd71mjahis1fn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,6 +5,7 @@ import 'package:kisan_app/presentation/auth/signin_screen.dart';
 import 'package:kisan_app/presentation/widgets/ks_button.dart';
 import 'package:kisan_app/presentation/widgets/ks_text.dart';
 import 'package:kisan_app/presentation/widgets/ks_textfield.dart';
+import 'package:kisan_app/presentation/widgets/ks_text.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});

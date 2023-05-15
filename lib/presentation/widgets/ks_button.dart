@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kisan_app/core/utils/themes.dart';
-import 'package:kisan_app/widgets/ks_text.dart';
+import 'package:kisan_app/presentation/widgets/ks_text.dart';
 
 class KsButton extends StatelessWidget {
   final VoidCallback? onTap;

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 const cPrimaryColor = Color(0xFF166955);
 const cWhite = Colors.white;
 const cBlack = Colors.black;
+const productTileColor = Color(0xFFAEE0D4);
 
 abstract class Themes {
   static final ThemeData appTheme = ThemeData(

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kisan_app/core/utils/app_images.dart';
 import 'package:kisan_app/core/utils/constant.dart';
 import 'package:kisan_app/core/utils/themes.dart';
-import 'package:kisan_app/widgets/ks_button.dart';
-import 'package:kisan_app/widgets/ks_text.dart';
+import 'package:kisan_app/presentation/widgets/ks_button.dart';
+import 'package:kisan_app/presentation/widgets/ks_text.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
