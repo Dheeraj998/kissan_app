@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kisan_app/presentation/widgets/ks_text.dart';
+import 'package:kisan_app/widgets/ks_text.dart';
 
 class KsTextField extends StatelessWidget {
   final TextEditingController textEditingController;
