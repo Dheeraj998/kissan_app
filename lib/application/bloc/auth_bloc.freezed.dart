@@ -19,32 +19,44 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(bool type) isLogin,
+    required TResult Function(String userType) isBuyer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(bool type)? isLogin,
+    TResult? Function(String userType)? isBuyer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(bool type)? isLogin,
+    TResult Function(String userType)? isBuyer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_IsLogin value) isLogin,
+    required TResult Function(_IsBuyer value) isBuyer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_IsLogin value)? isLogin,
+    TResult? Function(_IsBuyer value)? isBuyer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_IsLogin value)? isLogin,
+    TResult Function(_IsBuyer value)? isBuyer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -105,6 +117,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function(bool type) isLogin,
+    required TResult Function(String userType) isBuyer,
   }) {
     return started();
   }
@@ -113,6 +127,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(bool type)? isLogin,
+    TResult? Function(String userType)? isBuyer,
   }) {
     return started?.call();
   }
@@ -121,6 +137,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(bool type)? isLogin,
+    TResult Function(String userType)? isBuyer,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -133,6 +151,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_IsLogin value) isLogin,
+    required TResult Function(_IsBuyer value) isBuyer,
   }) {
     return started(this);
   }
@@ -141,6 +161,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_IsLogin value)? isLogin,
+    TResult? Function(_IsBuyer value)? isBuyer,
   }) {
     return started?.call(this);
   }
@@ -149,6 +171,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_IsLogin value)? isLogin,
+    TResult Function(_IsBuyer value)? isBuyer,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -163,38 +187,289 @@ abstract class _Started implements AuthEvent {
 }
 
 /// @nodoc
-mixin _$AuthState {
+abstract class _$$_IsLoginCopyWith<$Res> {
+  factory _$$_IsLoginCopyWith(
+          _$_IsLogin value, $Res Function(_$_IsLogin) then) =
+      __$$_IsLoginCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool type});
+}
+
+/// @nodoc
+class __$$_IsLoginCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$_IsLogin>
+    implements _$$_IsLoginCopyWith<$Res> {
+  __$$_IsLoginCopyWithImpl(_$_IsLogin _value, $Res Function(_$_IsLogin) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+  }) {
+    return _then(_$_IsLogin(
+      null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_IsLogin implements _IsLogin {
+  const _$_IsLogin(this.type);
+
+  @override
+  final bool type;
+
+  @override
+  String toString() {
+    return 'AuthEvent.isLogin(type: $type)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_IsLogin &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, type);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_IsLoginCopyWith<_$_IsLogin> get copyWith =>
+      __$$_IsLoginCopyWithImpl<_$_IsLogin>(this, _$identity);
+
+  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
+    required TResult Function() started,
+    required TResult Function(bool type) isLogin,
+    required TResult Function(String userType) isBuyer,
+  }) {
+    return isLogin(type);
+  }
+
+  @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
+    TResult? Function()? started,
+    TResult? Function(bool type)? isLogin,
+    TResult? Function(String userType)? isBuyer,
+  }) {
+    return isLogin?.call(type);
+  }
+
+  @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? started,
+    TResult Function(bool type)? isLogin,
+    TResult Function(String userType)? isBuyer,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    if (isLogin != null) {
+      return isLogin(type);
+    }
+    return orElse();
+  }
+
+  @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
+    required TResult Function(_Started value) started,
+    required TResult Function(_IsLogin value) isLogin,
+    required TResult Function(_IsBuyer value) isBuyer,
+  }) {
+    return isLogin(this);
+  }
+
+  @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
+    TResult? Function(_Started value)? started,
+    TResult? Function(_IsLogin value)? isLogin,
+    TResult? Function(_IsBuyer value)? isBuyer,
+  }) {
+    return isLogin?.call(this);
+  }
+
+  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Started value)? started,
+    TResult Function(_IsLogin value)? isLogin,
+    TResult Function(_IsBuyer value)? isBuyer,
     required TResult orElse(),
-  }) =>
+  }) {
+    if (isLogin != null) {
+      return isLogin(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsLogin implements AuthEvent {
+  const factory _IsLogin(final bool type) = _$_IsLogin;
+
+  bool get type;
+  @JsonKey(ignore: true)
+  _$$_IsLoginCopyWith<_$_IsLogin> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_IsBuyerCopyWith<$Res> {
+  factory _$$_IsBuyerCopyWith(
+          _$_IsBuyer value, $Res Function(_$_IsBuyer) then) =
+      __$$_IsBuyerCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String userType});
+}
+
+/// @nodoc
+class __$$_IsBuyerCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$_IsBuyer>
+    implements _$$_IsBuyerCopyWith<$Res> {
+  __$$_IsBuyerCopyWithImpl(_$_IsBuyer _value, $Res Function(_$_IsBuyer) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userType = null,
+  }) {
+    return _then(_$_IsBuyer(
+      null == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_IsBuyer implements _IsBuyer {
+  const _$_IsBuyer(this.userType);
+
+  @override
+  final String userType;
+
+  @override
+  String toString() {
+    return 'AuthEvent.isBuyer(userType: $userType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_IsBuyer &&
+            (identical(other.userType, userType) ||
+                other.userType == userType));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userType);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_IsBuyerCopyWith<_$_IsBuyer> get copyWith =>
+      __$$_IsBuyerCopyWithImpl<_$_IsBuyer>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(bool type) isLogin,
+    required TResult Function(String userType) isBuyer,
+  }) {
+    return isBuyer(userType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(bool type)? isLogin,
+    TResult? Function(String userType)? isBuyer,
+  }) {
+    return isBuyer?.call(userType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool type)? isLogin,
+    TResult Function(String userType)? isBuyer,
+    required TResult orElse(),
+  }) {
+    if (isBuyer != null) {
+      return isBuyer(userType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_IsLogin value) isLogin,
+    required TResult Function(_IsBuyer value) isBuyer,
+  }) {
+    return isBuyer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_IsLogin value)? isLogin,
+    TResult? Function(_IsBuyer value)? isBuyer,
+  }) {
+    return isBuyer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_IsLogin value)? isLogin,
+    TResult Function(_IsBuyer value)? isBuyer,
+    required TResult orElse(),
+  }) {
+    if (isBuyer != null) {
+      return isBuyer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsBuyer implements AuthEvent {
+  const factory _IsBuyer(final String userType) = _$_IsBuyer;
+
+  String get userType;
+  @JsonKey(ignore: true)
+  _$$_IsBuyerCopyWith<_$_IsBuyer> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$AuthState {
+  bool get isLogin => throw _privateConstructorUsedError;
+  String? get userType => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AuthStateCopyWith<AuthState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -202,6 +477,8 @@ mixin _$AuthState {
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
+  @useResult
+  $Res call({bool isLogin, String? userType});
 }
 
 /// @nodoc
@@ -213,99 +490,108 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLogin = null,
+    Object? userType = freezed,
+  }) {
+    return _then(_value.copyWith(
+      isLogin: null == isLogin
+          ? _value.isLogin
+          : isLogin // ignore: cast_nullable_to_non_nullable
+              as bool,
+      userType: freezed == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory _$$_AuthStateCopyWith(
+          _$_AuthState value, $Res Function(_$_AuthState) then) =
+      __$$_AuthStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isLogin, String? userType});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$_AuthStateCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_AuthState>
+    implements _$$_AuthStateCopyWith<$Res> {
+  __$$_AuthStateCopyWithImpl(
+      _$_AuthState _value, $Res Function(_$_AuthState) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLogin = null,
+    Object? userType = freezed,
+  }) {
+    return _then(_$_AuthState(
+      isLogin: null == isLogin
+          ? _value.isLogin
+          : isLogin // ignore: cast_nullable_to_non_nullable
+              as bool,
+      userType: freezed == userType
+          ? _value.userType
+          : userType // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_AuthState implements _AuthState {
+  const _$_AuthState({required this.isLogin, this.userType});
+
+  @override
+  final bool isLogin;
+  @override
+  final String? userType;
 
   @override
   String toString() {
-    return 'AuthState.initial()';
+    return 'AuthState(isLogin: $isLogin, userType: $userType)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType &&
+            other is _$_AuthState &&
+            (identical(other.isLogin, isLogin) || other.isLogin == isLogin) &&
+            (identical(other.userType, userType) ||
+                other.userType == userType));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isLogin, userType);
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
+      __$$_AuthStateCopyWithImpl<_$_AuthState>(this, _$identity);
 }
 
-abstract class _Initial implements AuthState {
-  const factory _Initial() = _$_Initial;
+abstract class _AuthState implements AuthState {
+  const factory _AuthState(
+      {required final bool isLogin, final String? userType}) = _$_AuthState;
+
+  @override
+  bool get isLogin;
+  @override
+  String? get userType;
+  @override
+  @JsonKey(ignore: true)
+  _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

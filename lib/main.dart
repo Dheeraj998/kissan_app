@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AuthBloc()..add(AuthEvent.started()),
+          create: (context) => AuthBloc()..add(const AuthEvent.started()),
         )
       ],
       child: ScreenUtilInit(

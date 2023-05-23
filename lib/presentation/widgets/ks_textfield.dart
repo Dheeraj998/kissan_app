@@ -32,10 +32,10 @@ class KsTextField extends StatelessWidget {
           ),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
-              borderSide: BorderSide(color: Color(0xFF7C7C7C))),
+              borderSide: const BorderSide(color: Color(0xFF7C7C7C))),
           hintText: hinText,
-          contentPadding: EdgeInsets.zero,
-          hintStyle: TextStyle(color: cBlack),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+          hintStyle: const TextStyle(color: cBlack),
           suffixIcon: Icon(trailingIcon)),
     );
   }
