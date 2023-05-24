@@ -5,6 +5,7 @@ import 'package:kisan_app/application/bloc/auth_bloc.dart';
 import 'package:kisan_app/core/utils/constant.dart';
 import 'package:kisan_app/firebase_services/auth_methods.dart';
 import 'package:kisan_app/presentation/auth/signin_screen.dart';
+import 'package:kisan_app/presentation/widgets/custom_snackbar.dart';
 import 'package:kisan_app/presentation/widgets/ks_button.dart';
 import 'package:kisan_app/presentation/widgets/ks_text.dart';
 import 'package:kisan_app/presentation/widgets/ks_textfield.dart';
@@ -20,53 +21,82 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: KsText(text: "Register"),
+        title: const KsText(text: "Register"),
       ),
-      body: Column(
-        children: [
-          IgnorePointer(
-            ignoring: true,
-            child: KsToggleButton(
-              button1Text: "Buyer",
-              button2Text: "Seller",
-              buttonHeight: 44.h,
-              borderRdius: 50.r,
-              buttonTap: (val) {},
-            ),
-          ),
-          sized0hx50,
-          sized0hx10,
-          KsTextField(
-            textEditingController: context.read<AuthBloc>().firstNameCtr,
-            hinText: "First name",
-            labelText: "firsname",
-          ),
-          sized0hx20,
-          KsTextField(
-            textEditingController: lastnameCtr,
-            hinText: "Last name",
-            labelText: "lastname",
-          ),
-          sized0hx20,
-          KsTextField(
-            textEditingController: context.read<AuthBloc>().dobCtr,
-            hinText: "Date of birth",
-            labelText: "dateofbirth",
-          ),
-          sized0hx30,
-          KsButton(
-            buttonText: "Register",
-            onTap: () {
-              AuthMethods().signupUser(
-                  email: context.read<AuthBloc>().emailCtr.text,
-                  password: context.read<AuthBloc>().passwordCtr.text,
-                  nickname: context.read<AuthBloc>().nickNameCtr.text,
-                  firstname: context.read<AuthBloc>().firstNameCtr.text,
-                  type: 'buyer',
-                  dob: context.read<AuthBloc>().dobCtr.text);
-            },
-          )
-        ],
+      body: SingleChildScrollView(
+        child: BlocBuilder<AuthBloc, AuthState>(
+          builder: (context, state) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Column(
+                children: [
+                  IgnorePointer(
+                    ignoring: true,
+                    child: KsToggleButton(
+                      button1Text: "Buyer",
+                      button2Text: "Seller",
+                      buttonHeight: 44.h,
+                      userType: state.userType == 'Buyer' ? 'Buyer' : 'Seller',
+                      buyerButton: true,
+                      borderRdius: 50.r,
+                      buttonTap: (val) {
+                        if (val == true) {
+                          context
+                              .read<AuthBloc>()
+                              .add(const AuthEvent.isBuyer('Seller'));
+                        } else {
+                          context
+                              .read<AuthBloc>()
+                              .add(const AuthEvent.isBuyer('Buyer'));
+                        }
+                      },
+                    ),
+                  ),
+                  sized0hx50,
+                  sized0hx10,
+                  KsTextField(
+                    textEditingController:
+                        context.read<AuthBloc>().firstNameCtr,
+                    hinText: "First name",
+                    labelText: "firsname*",
+                  ),
+                  sized0hx20,
+                  KsTextField(
+                    textEditingController: lastnameCtr,
+                    hinText: "Last name",
+                    labelText: "lastname",
+                  ),
+                  sized0hx20,
+                  KsTextField(
+                    textEditingController: context.read<AuthBloc>().dobCtr,
+                    hinText: "Date of birth",
+                    labelText: "date of birth*",
+                  ),
+                  sized0hx30,
+                  KsButton(
+                    buttonText: "Register",
+                    onTap: () {
+                      if (context.read<AuthBloc>().firstNameCtr.text.isEmpty ||
+                          context.read<AuthBloc>().dobCtr.text.isEmpty) {
+                        CustomSnackbar.show(
+                            context, "please fill mandatory fields");
+                        return;
+                      }
+                      AuthMethods().signupUser(
+                          email: context.read<AuthBloc>().emailCtr.text,
+                          password: context.read<AuthBloc>().passwordCtr.text,
+                          nickname: context.read<AuthBloc>().nickNameCtr.text,
+                          firstname: context.read<AuthBloc>().firstNameCtr.text,
+                          lastname: lastnameCtr.text,
+                          type: context.read<AuthBloc>().userType,
+                          dob: context.read<AuthBloc>().dobCtr.text);
+                    },
+                  )
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

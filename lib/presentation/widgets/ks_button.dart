@@ -16,6 +16,7 @@ class KsButton extends StatelessWidget {
   final FontWeight? buttonTextWeight;
   final double? outerBorderWidth;
   final double? innerBorderWidth;
+  final bool? isBusy;
   const KsButton({
     super.key,
     this.onTap,
@@ -30,6 +31,7 @@ class KsButton extends StatelessWidget {
     this.buttonTextWeight,
     this.outerBorderWidth,
     this.innerBorderWidth,
+    this.isBusy,
   });
 
   @override
@@ -55,12 +57,18 @@ class KsButton extends StatelessWidget {
                 width: innerBorderWidth ?? 2.5),
           ),
           child: Center(
-            child: KsText(
-              text: buttonText,
-              fontColor: cWhite,
-              fontSize: buttonFontSize,
-              fontWeight: buttonTextWeight,
-            ),
+            child: isBusy == true
+                ? const SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: CircularProgressIndicator(),
+                  )
+                : KsText(
+                    text: buttonText,
+                    fontColor: cWhite,
+                    fontSize: buttonFontSize,
+                    fontWeight: buttonTextWeight,
+                  ),
           ),
         ),
       ),

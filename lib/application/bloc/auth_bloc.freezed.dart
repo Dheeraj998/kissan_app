@@ -21,6 +21,7 @@ mixin _$AuthEvent {
     required TResult Function() started,
     required TResult Function(bool type) isLogin,
     required TResult Function(String userType) isBuyer,
+    required TResult Function() isLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$AuthEvent {
     TResult? Function()? started,
     TResult? Function(bool type)? isLogin,
     TResult? Function(String userType)? isBuyer,
+    TResult? Function()? isLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$AuthEvent {
     TResult Function()? started,
     TResult Function(bool type)? isLogin,
     TResult Function(String userType)? isBuyer,
+    TResult Function()? isLoading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$AuthEvent {
     required TResult Function(_Started value) started,
     required TResult Function(_IsLogin value) isLogin,
     required TResult Function(_IsBuyer value) isBuyer,
+    required TResult Function(_IsLoading value) isLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$AuthEvent {
     TResult? Function(_Started value)? started,
     TResult? Function(_IsLogin value)? isLogin,
     TResult? Function(_IsBuyer value)? isBuyer,
+    TResult? Function(_IsLoading value)? isLoading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$AuthEvent {
     TResult Function(_Started value)? started,
     TResult Function(_IsLogin value)? isLogin,
     TResult Function(_IsBuyer value)? isBuyer,
+    TResult Function(_IsLoading value)? isLoading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +125,7 @@ class _$_Started implements _Started {
     required TResult Function() started,
     required TResult Function(bool type) isLogin,
     required TResult Function(String userType) isBuyer,
+    required TResult Function() isLoading,
   }) {
     return started();
   }
@@ -129,6 +136,7 @@ class _$_Started implements _Started {
     TResult? Function()? started,
     TResult? Function(bool type)? isLogin,
     TResult? Function(String userType)? isBuyer,
+    TResult? Function()? isLoading,
   }) {
     return started?.call();
   }
@@ -139,6 +147,7 @@ class _$_Started implements _Started {
     TResult Function()? started,
     TResult Function(bool type)? isLogin,
     TResult Function(String userType)? isBuyer,
+    TResult Function()? isLoading,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -153,6 +162,7 @@ class _$_Started implements _Started {
     required TResult Function(_Started value) started,
     required TResult Function(_IsLogin value) isLogin,
     required TResult Function(_IsBuyer value) isBuyer,
+    required TResult Function(_IsLoading value) isLoading,
   }) {
     return started(this);
   }
@@ -163,6 +173,7 @@ class _$_Started implements _Started {
     TResult? Function(_Started value)? started,
     TResult? Function(_IsLogin value)? isLogin,
     TResult? Function(_IsBuyer value)? isBuyer,
+    TResult? Function(_IsLoading value)? isLoading,
   }) {
     return started?.call(this);
   }
@@ -173,6 +184,7 @@ class _$_Started implements _Started {
     TResult Function(_Started value)? started,
     TResult Function(_IsLogin value)? isLogin,
     TResult Function(_IsBuyer value)? isBuyer,
+    TResult Function(_IsLoading value)? isLoading,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -252,6 +264,7 @@ class _$_IsLogin implements _IsLogin {
     required TResult Function() started,
     required TResult Function(bool type) isLogin,
     required TResult Function(String userType) isBuyer,
+    required TResult Function() isLoading,
   }) {
     return isLogin(type);
   }
@@ -262,6 +275,7 @@ class _$_IsLogin implements _IsLogin {
     TResult? Function()? started,
     TResult? Function(bool type)? isLogin,
     TResult? Function(String userType)? isBuyer,
+    TResult? Function()? isLoading,
   }) {
     return isLogin?.call(type);
   }
@@ -272,6 +286,7 @@ class _$_IsLogin implements _IsLogin {
     TResult Function()? started,
     TResult Function(bool type)? isLogin,
     TResult Function(String userType)? isBuyer,
+    TResult Function()? isLoading,
     required TResult orElse(),
   }) {
     if (isLogin != null) {
@@ -286,6 +301,7 @@ class _$_IsLogin implements _IsLogin {
     required TResult Function(_Started value) started,
     required TResult Function(_IsLogin value) isLogin,
     required TResult Function(_IsBuyer value) isBuyer,
+    required TResult Function(_IsLoading value) isLoading,
   }) {
     return isLogin(this);
   }
@@ -296,6 +312,7 @@ class _$_IsLogin implements _IsLogin {
     TResult? Function(_Started value)? started,
     TResult? Function(_IsLogin value)? isLogin,
     TResult? Function(_IsBuyer value)? isBuyer,
+    TResult? Function(_IsLoading value)? isLoading,
   }) {
     return isLogin?.call(this);
   }
@@ -306,6 +323,7 @@ class _$_IsLogin implements _IsLogin {
     TResult Function(_Started value)? started,
     TResult Function(_IsLogin value)? isLogin,
     TResult Function(_IsBuyer value)? isBuyer,
+    TResult Function(_IsLoading value)? isLoading,
     required TResult orElse(),
   }) {
     if (isLogin != null) {
@@ -391,6 +409,7 @@ class _$_IsBuyer implements _IsBuyer {
     required TResult Function() started,
     required TResult Function(bool type) isLogin,
     required TResult Function(String userType) isBuyer,
+    required TResult Function() isLoading,
   }) {
     return isBuyer(userType);
   }
@@ -401,6 +420,7 @@ class _$_IsBuyer implements _IsBuyer {
     TResult? Function()? started,
     TResult? Function(bool type)? isLogin,
     TResult? Function(String userType)? isBuyer,
+    TResult? Function()? isLoading,
   }) {
     return isBuyer?.call(userType);
   }
@@ -411,6 +431,7 @@ class _$_IsBuyer implements _IsBuyer {
     TResult Function()? started,
     TResult Function(bool type)? isLogin,
     TResult Function(String userType)? isBuyer,
+    TResult Function()? isLoading,
     required TResult orElse(),
   }) {
     if (isBuyer != null) {
@@ -425,6 +446,7 @@ class _$_IsBuyer implements _IsBuyer {
     required TResult Function(_Started value) started,
     required TResult Function(_IsLogin value) isLogin,
     required TResult Function(_IsBuyer value) isBuyer,
+    required TResult Function(_IsLoading value) isLoading,
   }) {
     return isBuyer(this);
   }
@@ -435,6 +457,7 @@ class _$_IsBuyer implements _IsBuyer {
     TResult? Function(_Started value)? started,
     TResult? Function(_IsLogin value)? isLogin,
     TResult? Function(_IsBuyer value)? isBuyer,
+    TResult? Function(_IsLoading value)? isLoading,
   }) {
     return isBuyer?.call(this);
   }
@@ -445,6 +468,7 @@ class _$_IsBuyer implements _IsBuyer {
     TResult Function(_Started value)? started,
     TResult Function(_IsLogin value)? isLogin,
     TResult Function(_IsBuyer value)? isBuyer,
+    TResult Function(_IsLoading value)? isLoading,
     required TResult orElse(),
   }) {
     if (isBuyer != null) {
@@ -464,9 +488,124 @@ abstract class _IsBuyer implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$$_IsLoadingCopyWith<$Res> {
+  factory _$$_IsLoadingCopyWith(
+          _$_IsLoading value, $Res Function(_$_IsLoading) then) =
+      __$$_IsLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_IsLoadingCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$_IsLoading>
+    implements _$$_IsLoadingCopyWith<$Res> {
+  __$$_IsLoadingCopyWithImpl(
+      _$_IsLoading _value, $Res Function(_$_IsLoading) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_IsLoading implements _IsLoading {
+  const _$_IsLoading();
+
+  @override
+  String toString() {
+    return 'AuthEvent.isLoading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_IsLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(bool type) isLogin,
+    required TResult Function(String userType) isBuyer,
+    required TResult Function() isLoading,
+  }) {
+    return isLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(bool type)? isLogin,
+    TResult? Function(String userType)? isBuyer,
+    TResult? Function()? isLoading,
+  }) {
+    return isLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool type)? isLogin,
+    TResult Function(String userType)? isBuyer,
+    TResult Function()? isLoading,
+    required TResult orElse(),
+  }) {
+    if (isLoading != null) {
+      return isLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_IsLogin value) isLogin,
+    required TResult Function(_IsBuyer value) isBuyer,
+    required TResult Function(_IsLoading value) isLoading,
+  }) {
+    return isLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_IsLogin value)? isLogin,
+    TResult? Function(_IsBuyer value)? isBuyer,
+    TResult? Function(_IsLoading value)? isLoading,
+  }) {
+    return isLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_IsLogin value)? isLogin,
+    TResult Function(_IsBuyer value)? isBuyer,
+    TResult Function(_IsLoading value)? isLoading,
+    required TResult orElse(),
+  }) {
+    if (isLoading != null) {
+      return isLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsLoading implements AuthEvent {
+  const factory _IsLoading() = _$_IsLoading;
+}
+
+/// @nodoc
 mixin _$AuthState {
   bool get isLogin => throw _privateConstructorUsedError;
   String? get userType => throw _privateConstructorUsedError;
+  bool get isBusy => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -478,7 +617,7 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({bool isLogin, String? userType});
+  $Res call({bool isLogin, String? userType, bool isBusy});
 }
 
 /// @nodoc
@@ -496,6 +635,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   $Res call({
     Object? isLogin = null,
     Object? userType = freezed,
+    Object? isBusy = null,
   }) {
     return _then(_value.copyWith(
       isLogin: null == isLogin
@@ -506,6 +646,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as String?,
+      isBusy: null == isBusy
+          ? _value.isBusy
+          : isBusy // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -517,7 +661,7 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       __$$_AuthStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLogin, String? userType});
+  $Res call({bool isLogin, String? userType, bool isBusy});
 }
 
 /// @nodoc
@@ -533,6 +677,7 @@ class __$$_AuthStateCopyWithImpl<$Res>
   $Res call({
     Object? isLogin = null,
     Object? userType = freezed,
+    Object? isBusy = null,
   }) {
     return _then(_$_AuthState(
       isLogin: null == isLogin
@@ -543,6 +688,10 @@ class __$$_AuthStateCopyWithImpl<$Res>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as String?,
+      isBusy: null == isBusy
+          ? _value.isBusy
+          : isBusy // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -550,16 +699,19 @@ class __$$_AuthStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AuthState implements _AuthState {
-  const _$_AuthState({required this.isLogin, this.userType});
+  const _$_AuthState(
+      {required this.isLogin, this.userType, required this.isBusy});
 
   @override
   final bool isLogin;
   @override
   final String? userType;
+  @override
+  final bool isBusy;
 
   @override
   String toString() {
-    return 'AuthState(isLogin: $isLogin, userType: $userType)';
+    return 'AuthState(isLogin: $isLogin, userType: $userType, isBusy: $isBusy)';
   }
 
   @override
@@ -569,11 +721,12 @@ class _$_AuthState implements _AuthState {
             other is _$_AuthState &&
             (identical(other.isLogin, isLogin) || other.isLogin == isLogin) &&
             (identical(other.userType, userType) ||
-                other.userType == userType));
+                other.userType == userType) &&
+            (identical(other.isBusy, isBusy) || other.isBusy == isBusy));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLogin, userType);
+  int get hashCode => Object.hash(runtimeType, isLogin, userType, isBusy);
 
   @JsonKey(ignore: true)
   @override
@@ -584,12 +737,16 @@ class _$_AuthState implements _AuthState {
 
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
-      {required final bool isLogin, final String? userType}) = _$_AuthState;
+      {required final bool isLogin,
+      final String? userType,
+      required final bool isBusy}) = _$_AuthState;
 
   @override
   bool get isLogin;
   @override
   String? get userType;
+  @override
+  bool get isBusy;
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>

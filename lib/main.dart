@@ -8,12 +8,16 @@ import 'package:kisan_app/core/route/router.dart';
 import 'package:kisan_app/core/utils/themes.dart';
 import 'package:kisan_app/firebase_options.dart';
 
+import 'core/injection/injectable.dart';
+
 ///////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////
 //////////////////  sdk 3.7.3////////////////////////////////
 /////////////////////////////////////////////////////////////
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await configureDependancies();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

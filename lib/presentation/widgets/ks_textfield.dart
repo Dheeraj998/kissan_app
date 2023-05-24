@@ -10,6 +10,7 @@ class KsTextField extends StatelessWidget {
   final IconData? trailingIcon;
   final bool? isDense;
   final Widget? prefixIcon;
+  final FocusNode? focusNode;
   const KsTextField(
       {super.key,
       required this.textEditingController,
@@ -17,12 +18,14 @@ class KsTextField extends StatelessWidget {
       this.labelText,
       this.trailingIcon,
       this.isDense,
-      this.prefixIcon});
+      this.prefixIcon,
+      this.focusNode});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: textEditingController,
+      focusNode: focusNode,
       decoration: InputDecoration(
           isDense: isDense,
           prefixIcon: prefixIcon,

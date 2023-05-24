@@ -5,10 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kisan_app/application/bloc/auth_bloc.dart';
 import 'package:kisan_app/core/route/route_name.dart';
-import 'package:kisan_app/core/route/router.dart';
 import 'package:kisan_app/core/utils/app_images.dart';
 import 'package:kisan_app/core/utils/constant.dart';
 import 'package:kisan_app/core/utils/themes.dart';
+import 'package:kisan_app/firebase_services/auth_methods.dart';
+import 'package:kisan_app/presentation/widgets/custom_snackbar.dart';
 import 'package:kisan_app/presentation/widgets/ks_button.dart';
 import 'package:kisan_app/presentation/widgets/ks_text.dart';
 
@@ -18,6 +19,7 @@ class SiginInScreen extends StatelessWidget {
   SiginInScreen({super.key});
 
   TextEditingController signinController = TextEditingController();
+  final FocusNode confrmPasswrodFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +33,7 @@ class SiginInScreen extends StatelessWidget {
                 button1Text: "Register",
                 button2Text: "Login",
                 isLogin: state.isLogin,
+                isMainButton: true,
                 buttonTap: (val) {
                   if (val == true) {
                     context.read<AuthBloc>().add(const AuthEvent.isLogin(true));
@@ -74,9 +77,13 @@ class SiginInScreen extends StatelessWidget {
                                     if (val == true) {
                                       context.read<AuthBloc>().add(
                                           const AuthEvent.isBuyer('Seller'));
+                                      context.read<AuthBloc>().userType =
+                                          'Seller';
                                     } else {
                                       context.read<AuthBloc>().add(
                                           const AuthEvent.isBuyer('Buyer'));
+                                      context.read<AuthBloc>().userType =
+                                          'Buyer';
                                     }
                                   },
                                 )
@@ -110,6 +117,7 @@ class SiginInScreen extends StatelessWidget {
                                         hinText: "confirm passWord",
                                         isDense: true,
                                         labelText: "confirm password",
+                                        focusNode: confrmPasswrodFocusNode,
                                         trailingIcon: Icons.remove_red_eye,
                                       )
                                     : const SizedBox(),
@@ -118,9 +126,46 @@ class SiginInScreen extends StatelessWidget {
                                   buttonText: "Login",
                                   onTap: () {
                                     if (state.isLogin == false) {
+                                      confrmPasswrodFocusNode.unfocus();
+                                      if (context
+                                              .read<AuthBloc>()
+                                              .emailCtr
+                                              .text
+                                              .isEmpty ||
+                                          context
+                                              .read<AuthBloc>()
+                                              .passwordCtr
+                                              .text
+                                              .isEmpty ||
+                                          signinController.text.isEmpty) {
+                                        CustomSnackbar.show(
+                                            context, "Please fill all fields");
+                                        return;
+                                      }
+                                      if (context
+                                              .read<AuthBloc>()
+                                              .passwordCtr
+                                              .text
+                                              .trim() !=
+                                          signinController.text.trim()) {
+                                        CustomSnackbar.show(
+                                            context, "Password is wrong");
+                                        return;
+                                      }
                                       Navigator.of(context)
                                           .pushNamed(RouteName.nickNameScreeen);
-                                    } else {}
+                                    } else {
+                                      AuthMethods().loginUser(
+                                          context: context,
+                                          email: context
+                                              .read<AuthBloc>()
+                                              .emailCtr
+                                              .text,
+                                          password: context
+                                              .read<AuthBloc>()
+                                              .passwordCtr
+                                              .text);
+                                    }
                                   },
                                   innerBorderColor: cPrimaryColor,
                                 ),
@@ -151,6 +196,7 @@ class KsToggleButton extends StatelessWidget {
   final bool? isLogin;
   final String? userType;
   final bool? buyerButton;
+  final bool? isMainButton;
   final Function(bool val) buttonTap;
   const KsToggleButton({
     super.key,
@@ -163,6 +209,7 @@ class KsToggleButton extends StatelessWidget {
     required this.buttonTap,
     this.userType,
     this.buyerButton,
+    this.isMainButton,
   });
 
   @override
@@ -183,11 +230,11 @@ class KsToggleButton extends StatelessWidget {
               onTap: () => buttonTap(false),
               child: Container(
                 decoration: BoxDecoration(
-                    color: isLogin == true
-                        ? buyerButton == true && userType == 'Buyer'
+                    color: buyerButton == true && userType == 'Buyer'
+                        ? cPrimaryColor
+                        : isLogin == false && isMainButton == true
                             ? cPrimaryColor
-                            : Colors.white
-                        : cPrimaryColor,
+                            : Colors.white,
                     borderRadius: BorderRadius.circular(borderRdius ?? 12.r),
                     border: Border.all(color: cWhite, width: 2.5)),
                 child: Center(
@@ -204,11 +251,11 @@ class KsToggleButton extends StatelessWidget {
               onTap: () => buttonTap(true),
               child: Container(
                   decoration: BoxDecoration(
-                      color: isLogin == false
-                          ? buyerButton == true && userType == 'Seller'
+                      color: buyerButton == true && userType == 'Seller'
+                          ? cPrimaryColor
+                          : isLogin == true && isMainButton == true
                               ? cPrimaryColor
-                              : Colors.white
-                          : cPrimaryColor,
+                              : Colors.white,
                       borderRadius: BorderRadius.circular(borderRdius ?? 12.r),
                       border: Border.all(color: cWhite, width: 2.5)),
                   child: Center(

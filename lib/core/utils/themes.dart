@@ -9,6 +9,7 @@ const productTileColor = Color(0xFFAEE0D4);
 abstract class Themes {
   static final ThemeData appTheme = ThemeData(
       scaffoldBackgroundColor: Colors.white,
+      appBarTheme: AppBarTheme(backgroundColor: cWhite, elevation: 0),
       textTheme: GoogleFonts.poppinsTextTheme(),
       colorScheme: ColorScheme.light(
         primary: Colors.grey,

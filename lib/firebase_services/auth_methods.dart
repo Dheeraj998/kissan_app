@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:kisan_app/core/route/route_name.dart';
 import 'package:kisan_app/models/user_model.dart';
+import 'package:kisan_app/presentation/widgets/custom_snackbar.dart';
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -31,5 +34,24 @@ class AuthMethods {
           .doc(cred.user!.uid)
           .set(user.toJson());
     } catch (e) {}
+  }
+
+  void loginUser(
+      {required email,
+      required password,
+      required BuildContext context}) async {
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      Navigator.of(context).pushReplacementNamed(RouteName.mainScreen);
+    } on FirebaseAuthException catch (authError) {
+      print(authError.code);
+      CustomSnackbar.show(context, authError.code);
+    } catch (e) {
+      print(e.toString());
+      CustomSnackbar.show(context, "hello");
+    }
   }
 }
