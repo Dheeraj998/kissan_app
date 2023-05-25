@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kisan_app/application/bloc/auth_bloc.dart';
 import 'package:kisan_app/core/route/route_name.dart';
+import 'package:kisan_app/core/route/router.dart';
 import 'package:kisan_app/core/utils/app_images.dart';
 import 'package:kisan_app/core/utils/constant.dart';
 import 'package:kisan_app/core/utils/themes.dart';
@@ -77,13 +78,11 @@ class SiginInScreen extends StatelessWidget {
                                     if (val == true) {
                                       context.read<AuthBloc>().add(
                                           const AuthEvent.isBuyer('Seller'));
-                                      context.read<AuthBloc>().userType =
-                                          'Seller';
+                                      state.copyWith(userType: 'Seller');
                                     } else {
                                       context.read<AuthBloc>().add(
                                           const AuthEvent.isBuyer('Buyer'));
-                                      context.read<AuthBloc>().userType =
-                                          'Buyer';
+                                      state.copyWith(userType: 'Buyer');
                                     }
                                   },
                                 )
@@ -94,8 +93,7 @@ class SiginInScreen extends StatelessWidget {
                             child: Column(
                               children: [
                                 KsTextField(
-                                  textEditingController:
-                                      context.read<AuthBloc>().emailCtr,
+                                  textEditingController: state.emailCtr,
                                   hinText: "email",
                                   isDense: true,
                                   labelText: "email",
@@ -103,8 +101,7 @@ class SiginInScreen extends StatelessWidget {
                                 ),
                                 SizedBox(height: 16.h),
                                 KsTextField(
-                                  textEditingController:
-                                      context.read<AuthBloc>().passwordCtr,
+                                  textEditingController: state.passwordCtr,
                                   hinText: "passWord",
                                   isDense: true,
                                   labelText: "password",
@@ -127,26 +124,14 @@ class SiginInScreen extends StatelessWidget {
                                   onTap: () {
                                     if (state.isLogin == false) {
                                       confrmPasswrodFocusNode.unfocus();
-                                      if (context
-                                              .read<AuthBloc>()
-                                              .emailCtr
-                                              .text
-                                              .isEmpty ||
-                                          context
-                                              .read<AuthBloc>()
-                                              .passwordCtr
-                                              .text
-                                              .isEmpty ||
+                                      if (state.emailCtr.text.isEmpty ||
+                                          state.passwordCtr.text.isEmpty ||
                                           signinController.text.isEmpty) {
                                         CustomSnackbar.show(
                                             context, "Please fill all fields");
                                         return;
                                       }
-                                      if (context
-                                              .read<AuthBloc>()
-                                              .passwordCtr
-                                              .text
-                                              .trim() !=
+                                      if (state.passwordCtr.text.trim() !=
                                           signinController.text.trim()) {
                                         CustomSnackbar.show(
                                             context, "Password is wrong");
@@ -157,14 +142,8 @@ class SiginInScreen extends StatelessWidget {
                                     } else {
                                       AuthMethods().loginUser(
                                           context: context,
-                                          email: context
-                                              .read<AuthBloc>()
-                                              .emailCtr
-                                              .text,
-                                          password: context
-                                              .read<AuthBloc>()
-                                              .passwordCtr
-                                              .text);
+                                          email: state.emailCtr.text,
+                                          password: state.passwordCtr.text);
                                     }
                                   },
                                   innerBorderColor: cPrimaryColor,

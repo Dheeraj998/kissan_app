@@ -1,20 +1,24 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+import 'package:kisan_app/domain/auth/auth_respository.dart';
+
+import '../../core/utils/custom_print.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 part 'auth_bloc.freezed.dart';
 
+@injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  TextEditingController emailCtr = TextEditingController();
-  TextEditingController passwordCtr = TextEditingController();
-  TextEditingController nickNameCtr = TextEditingController();
-  TextEditingController firstNameCtr = TextEditingController();
-  TextEditingController dobCtr = TextEditingController();
-  String userType = 'Buyer';
-  AuthBloc() : super(AuthState.initial()) {
+  final AuthRepository authRepository;
+  // TextEditingController emailCtr = TextEditingController();
+  // TextEditingController passwordCtr = TextEditingController();
+  // TextEditingController nickNameCtr = TextEditingController();
+  // TextEditingController firstNameCtr = TextEditingController();
+  // TextEditingController dobCtr = TextEditingController();
+  AuthBloc(this.authRepository) : super(AuthState.initial()) {
     on<_Started>((event, emit) {});
     on<_IsLogin>((event, emit) {
       if (event.type == true) {
@@ -30,8 +34,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(state.copyWith(userType: 'Seller'));
       }
     });
-    on<_IsLoading>((event, emit) {
+    // on<_IsLoading>((event, emit) {
+    //   emit(state.copyWith(isBusy: true));
+    // });
+
+    on<_SignupUserEvent>((event, emit) {
+      // print(state.isBusy);
       emit(state.copyWith(isBusy: true));
+      print('-------------------------------------');
+      // print(state.isBusy);
+      // final res = authRepository.signupUser(
+      //     email: event.email,
+      //     password: event.password,
+      //     type: event.type,
+      //     firstname: event.firstname,
+      //     dob: event.dob,
+      //     lastname: event.lastname,
+      //     nickname: event.nickname);
+      emit(state.copyWith(isBusy: false));
+
+      // customPrint(res);
     });
   }
 }

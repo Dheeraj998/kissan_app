@@ -22,6 +22,9 @@ mixin _$AuthEvent {
     required TResult Function(bool type) isLogin,
     required TResult Function(String userType) isBuyer,
     required TResult Function() isLoading,
+    required TResult Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)
+        signupUserEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +33,9 @@ mixin _$AuthEvent {
     TResult? Function(bool type)? isLogin,
     TResult? Function(String userType)? isBuyer,
     TResult? Function()? isLoading,
+    TResult? Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)?
+        signupUserEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +44,9 @@ mixin _$AuthEvent {
     TResult Function(bool type)? isLogin,
     TResult Function(String userType)? isBuyer,
     TResult Function()? isLoading,
+    TResult Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)?
+        signupUserEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +56,7 @@ mixin _$AuthEvent {
     required TResult Function(_IsLogin value) isLogin,
     required TResult Function(_IsBuyer value) isBuyer,
     required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_SignupUserEvent value) signupUserEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +65,7 @@ mixin _$AuthEvent {
     TResult? Function(_IsLogin value)? isLogin,
     TResult? Function(_IsBuyer value)? isBuyer,
     TResult? Function(_IsLoading value)? isLoading,
+    TResult? Function(_SignupUserEvent value)? signupUserEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +74,7 @@ mixin _$AuthEvent {
     TResult Function(_IsLogin value)? isLogin,
     TResult Function(_IsBuyer value)? isBuyer,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_SignupUserEvent value)? signupUserEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +138,9 @@ class _$_Started implements _Started {
     required TResult Function(bool type) isLogin,
     required TResult Function(String userType) isBuyer,
     required TResult Function() isLoading,
+    required TResult Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)
+        signupUserEvent,
   }) {
     return started();
   }
@@ -137,6 +152,9 @@ class _$_Started implements _Started {
     TResult? Function(bool type)? isLogin,
     TResult? Function(String userType)? isBuyer,
     TResult? Function()? isLoading,
+    TResult? Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)?
+        signupUserEvent,
   }) {
     return started?.call();
   }
@@ -148,6 +166,9 @@ class _$_Started implements _Started {
     TResult Function(bool type)? isLogin,
     TResult Function(String userType)? isBuyer,
     TResult Function()? isLoading,
+    TResult Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)?
+        signupUserEvent,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -163,6 +184,7 @@ class _$_Started implements _Started {
     required TResult Function(_IsLogin value) isLogin,
     required TResult Function(_IsBuyer value) isBuyer,
     required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_SignupUserEvent value) signupUserEvent,
   }) {
     return started(this);
   }
@@ -174,6 +196,7 @@ class _$_Started implements _Started {
     TResult? Function(_IsLogin value)? isLogin,
     TResult? Function(_IsBuyer value)? isBuyer,
     TResult? Function(_IsLoading value)? isLoading,
+    TResult? Function(_SignupUserEvent value)? signupUserEvent,
   }) {
     return started?.call(this);
   }
@@ -185,6 +208,7 @@ class _$_Started implements _Started {
     TResult Function(_IsLogin value)? isLogin,
     TResult Function(_IsBuyer value)? isBuyer,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_SignupUserEvent value)? signupUserEvent,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -265,6 +289,9 @@ class _$_IsLogin implements _IsLogin {
     required TResult Function(bool type) isLogin,
     required TResult Function(String userType) isBuyer,
     required TResult Function() isLoading,
+    required TResult Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)
+        signupUserEvent,
   }) {
     return isLogin(type);
   }
@@ -276,6 +303,9 @@ class _$_IsLogin implements _IsLogin {
     TResult? Function(bool type)? isLogin,
     TResult? Function(String userType)? isBuyer,
     TResult? Function()? isLoading,
+    TResult? Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)?
+        signupUserEvent,
   }) {
     return isLogin?.call(type);
   }
@@ -287,6 +317,9 @@ class _$_IsLogin implements _IsLogin {
     TResult Function(bool type)? isLogin,
     TResult Function(String userType)? isBuyer,
     TResult Function()? isLoading,
+    TResult Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)?
+        signupUserEvent,
     required TResult orElse(),
   }) {
     if (isLogin != null) {
@@ -302,6 +335,7 @@ class _$_IsLogin implements _IsLogin {
     required TResult Function(_IsLogin value) isLogin,
     required TResult Function(_IsBuyer value) isBuyer,
     required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_SignupUserEvent value) signupUserEvent,
   }) {
     return isLogin(this);
   }
@@ -313,6 +347,7 @@ class _$_IsLogin implements _IsLogin {
     TResult? Function(_IsLogin value)? isLogin,
     TResult? Function(_IsBuyer value)? isBuyer,
     TResult? Function(_IsLoading value)? isLoading,
+    TResult? Function(_SignupUserEvent value)? signupUserEvent,
   }) {
     return isLogin?.call(this);
   }
@@ -324,6 +359,7 @@ class _$_IsLogin implements _IsLogin {
     TResult Function(_IsLogin value)? isLogin,
     TResult Function(_IsBuyer value)? isBuyer,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_SignupUserEvent value)? signupUserEvent,
     required TResult orElse(),
   }) {
     if (isLogin != null) {
@@ -410,6 +446,9 @@ class _$_IsBuyer implements _IsBuyer {
     required TResult Function(bool type) isLogin,
     required TResult Function(String userType) isBuyer,
     required TResult Function() isLoading,
+    required TResult Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)
+        signupUserEvent,
   }) {
     return isBuyer(userType);
   }
@@ -421,6 +460,9 @@ class _$_IsBuyer implements _IsBuyer {
     TResult? Function(bool type)? isLogin,
     TResult? Function(String userType)? isBuyer,
     TResult? Function()? isLoading,
+    TResult? Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)?
+        signupUserEvent,
   }) {
     return isBuyer?.call(userType);
   }
@@ -432,6 +474,9 @@ class _$_IsBuyer implements _IsBuyer {
     TResult Function(bool type)? isLogin,
     TResult Function(String userType)? isBuyer,
     TResult Function()? isLoading,
+    TResult Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)?
+        signupUserEvent,
     required TResult orElse(),
   }) {
     if (isBuyer != null) {
@@ -447,6 +492,7 @@ class _$_IsBuyer implements _IsBuyer {
     required TResult Function(_IsLogin value) isLogin,
     required TResult Function(_IsBuyer value) isBuyer,
     required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_SignupUserEvent value) signupUserEvent,
   }) {
     return isBuyer(this);
   }
@@ -458,6 +504,7 @@ class _$_IsBuyer implements _IsBuyer {
     TResult? Function(_IsLogin value)? isLogin,
     TResult? Function(_IsBuyer value)? isBuyer,
     TResult? Function(_IsLoading value)? isLoading,
+    TResult? Function(_SignupUserEvent value)? signupUserEvent,
   }) {
     return isBuyer?.call(this);
   }
@@ -469,6 +516,7 @@ class _$_IsBuyer implements _IsBuyer {
     TResult Function(_IsLogin value)? isLogin,
     TResult Function(_IsBuyer value)? isBuyer,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_SignupUserEvent value)? signupUserEvent,
     required TResult orElse(),
   }) {
     if (isBuyer != null) {
@@ -529,6 +577,9 @@ class _$_IsLoading implements _IsLoading {
     required TResult Function(bool type) isLogin,
     required TResult Function(String userType) isBuyer,
     required TResult Function() isLoading,
+    required TResult Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)
+        signupUserEvent,
   }) {
     return isLoading();
   }
@@ -540,6 +591,9 @@ class _$_IsLoading implements _IsLoading {
     TResult? Function(bool type)? isLogin,
     TResult? Function(String userType)? isBuyer,
     TResult? Function()? isLoading,
+    TResult? Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)?
+        signupUserEvent,
   }) {
     return isLoading?.call();
   }
@@ -551,6 +605,9 @@ class _$_IsLoading implements _IsLoading {
     TResult Function(bool type)? isLogin,
     TResult Function(String userType)? isBuyer,
     TResult Function()? isLoading,
+    TResult Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)?
+        signupUserEvent,
     required TResult orElse(),
   }) {
     if (isLoading != null) {
@@ -566,6 +623,7 @@ class _$_IsLoading implements _IsLoading {
     required TResult Function(_IsLogin value) isLogin,
     required TResult Function(_IsBuyer value) isBuyer,
     required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_SignupUserEvent value) signupUserEvent,
   }) {
     return isLoading(this);
   }
@@ -577,6 +635,7 @@ class _$_IsLoading implements _IsLoading {
     TResult? Function(_IsLogin value)? isLogin,
     TResult? Function(_IsBuyer value)? isBuyer,
     TResult? Function(_IsLoading value)? isLoading,
+    TResult? Function(_SignupUserEvent value)? signupUserEvent,
   }) {
     return isLoading?.call(this);
   }
@@ -588,6 +647,7 @@ class _$_IsLoading implements _IsLoading {
     TResult Function(_IsLogin value)? isLogin,
     TResult Function(_IsBuyer value)? isBuyer,
     TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_SignupUserEvent value)? signupUserEvent,
     required TResult orElse(),
   }) {
     if (isLoading != null) {
@@ -602,10 +662,255 @@ abstract class _IsLoading implements AuthEvent {
 }
 
 /// @nodoc
+abstract class _$$_SignupUserEventCopyWith<$Res> {
+  factory _$$_SignupUserEventCopyWith(
+          _$_SignupUserEvent value, $Res Function(_$_SignupUserEvent) then) =
+      __$$_SignupUserEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String email,
+      String password,
+      String? nickname,
+      String? lastname,
+      String type,
+      String firstname,
+      String dob});
+}
+
+/// @nodoc
+class __$$_SignupUserEventCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$_SignupUserEvent>
+    implements _$$_SignupUserEventCopyWith<$Res> {
+  __$$_SignupUserEventCopyWithImpl(
+      _$_SignupUserEvent _value, $Res Function(_$_SignupUserEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+    Object? nickname = freezed,
+    Object? lastname = freezed,
+    Object? type = null,
+    Object? firstname = null,
+    Object? dob = null,
+  }) {
+    return _then(_$_SignupUserEvent(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      nickname: freezed == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastname: freezed == lastname
+          ? _value.lastname
+          : lastname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      firstname: null == firstname
+          ? _value.firstname
+          : firstname // ignore: cast_nullable_to_non_nullable
+              as String,
+      dob: null == dob
+          ? _value.dob
+          : dob // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SignupUserEvent implements _SignupUserEvent {
+  const _$_SignupUserEvent(
+      {required this.email,
+      required this.password,
+      this.nickname,
+      this.lastname,
+      required this.type,
+      required this.firstname,
+      required this.dob});
+
+  @override
+  final String email;
+  @override
+  final String password;
+  @override
+  final String? nickname;
+  @override
+  final String? lastname;
+  @override
+  final String type;
+  @override
+  final String firstname;
+  @override
+  final String dob;
+
+  @override
+  String toString() {
+    return 'AuthEvent.signupUserEvent(email: $email, password: $password, nickname: $nickname, lastname: $lastname, type: $type, firstname: $firstname, dob: $dob)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SignupUserEvent &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.nickname, nickname) ||
+                other.nickname == nickname) &&
+            (identical(other.lastname, lastname) ||
+                other.lastname == lastname) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.firstname, firstname) ||
+                other.firstname == firstname) &&
+            (identical(other.dob, dob) || other.dob == dob));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, email, password, nickname, lastname, type, firstname, dob);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SignupUserEventCopyWith<_$_SignupUserEvent> get copyWith =>
+      __$$_SignupUserEventCopyWithImpl<_$_SignupUserEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(bool type) isLogin,
+    required TResult Function(String userType) isBuyer,
+    required TResult Function() isLoading,
+    required TResult Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)
+        signupUserEvent,
+  }) {
+    return signupUserEvent(
+        email, password, nickname, lastname, type, firstname, dob);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(bool type)? isLogin,
+    TResult? Function(String userType)? isBuyer,
+    TResult? Function()? isLoading,
+    TResult? Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)?
+        signupUserEvent,
+  }) {
+    return signupUserEvent?.call(
+        email, password, nickname, lastname, type, firstname, dob);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(bool type)? isLogin,
+    TResult Function(String userType)? isBuyer,
+    TResult Function()? isLoading,
+    TResult Function(String email, String password, String? nickname,
+            String? lastname, String type, String firstname, String dob)?
+        signupUserEvent,
+    required TResult orElse(),
+  }) {
+    if (signupUserEvent != null) {
+      return signupUserEvent(
+          email, password, nickname, lastname, type, firstname, dob);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_IsLogin value) isLogin,
+    required TResult Function(_IsBuyer value) isBuyer,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_SignupUserEvent value) signupUserEvent,
+  }) {
+    return signupUserEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_IsLogin value)? isLogin,
+    TResult? Function(_IsBuyer value)? isBuyer,
+    TResult? Function(_IsLoading value)? isLoading,
+    TResult? Function(_SignupUserEvent value)? signupUserEvent,
+  }) {
+    return signupUserEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_IsLogin value)? isLogin,
+    TResult Function(_IsBuyer value)? isBuyer,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_SignupUserEvent value)? signupUserEvent,
+    required TResult orElse(),
+  }) {
+    if (signupUserEvent != null) {
+      return signupUserEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignupUserEvent implements AuthEvent {
+  const factory _SignupUserEvent(
+      {required final String email,
+      required final String password,
+      final String? nickname,
+      final String? lastname,
+      required final String type,
+      required final String firstname,
+      required final String dob}) = _$_SignupUserEvent;
+
+  String get email;
+  String get password;
+  String? get nickname;
+  String? get lastname;
+  String get type;
+  String get firstname;
+  String get dob;
+  @JsonKey(ignore: true)
+  _$$_SignupUserEventCopyWith<_$_SignupUserEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$AuthState {
   bool get isLogin => throw _privateConstructorUsedError;
-  String? get userType => throw _privateConstructorUsedError;
+  String get userType => throw _privateConstructorUsedError;
   bool get isBusy => throw _privateConstructorUsedError;
+  TextEditingController get emailCtr => throw _privateConstructorUsedError;
+  TextEditingController get passwordCtr => throw _privateConstructorUsedError;
+  TextEditingController get nickNameCtr => throw _privateConstructorUsedError;
+  TextEditingController get firstNameCtr => throw _privateConstructorUsedError;
+  TextEditingController get dobCtr => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -617,7 +922,15 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({bool isLogin, String? userType, bool isBusy});
+  $Res call(
+      {bool isLogin,
+      String userType,
+      bool isBusy,
+      TextEditingController emailCtr,
+      TextEditingController passwordCtr,
+      TextEditingController nickNameCtr,
+      TextEditingController firstNameCtr,
+      TextEditingController dobCtr});
 }
 
 /// @nodoc
@@ -634,22 +947,47 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @override
   $Res call({
     Object? isLogin = null,
-    Object? userType = freezed,
+    Object? userType = null,
     Object? isBusy = null,
+    Object? emailCtr = null,
+    Object? passwordCtr = null,
+    Object? nickNameCtr = null,
+    Object? firstNameCtr = null,
+    Object? dobCtr = null,
   }) {
     return _then(_value.copyWith(
       isLogin: null == isLogin
           ? _value.isLogin
           : isLogin // ignore: cast_nullable_to_non_nullable
               as bool,
-      userType: freezed == userType
+      userType: null == userType
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       isBusy: null == isBusy
           ? _value.isBusy
           : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
+      emailCtr: null == emailCtr
+          ? _value.emailCtr
+          : emailCtr // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
+      passwordCtr: null == passwordCtr
+          ? _value.passwordCtr
+          : passwordCtr // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
+      nickNameCtr: null == nickNameCtr
+          ? _value.nickNameCtr
+          : nickNameCtr // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
+      firstNameCtr: null == firstNameCtr
+          ? _value.firstNameCtr
+          : firstNameCtr // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
+      dobCtr: null == dobCtr
+          ? _value.dobCtr
+          : dobCtr // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
     ) as $Val);
   }
 }
@@ -661,7 +999,15 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       __$$_AuthStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLogin, String? userType, bool isBusy});
+  $Res call(
+      {bool isLogin,
+      String userType,
+      bool isBusy,
+      TextEditingController emailCtr,
+      TextEditingController passwordCtr,
+      TextEditingController nickNameCtr,
+      TextEditingController firstNameCtr,
+      TextEditingController dobCtr});
 }
 
 /// @nodoc
@@ -676,22 +1022,47 @@ class __$$_AuthStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLogin = null,
-    Object? userType = freezed,
+    Object? userType = null,
     Object? isBusy = null,
+    Object? emailCtr = null,
+    Object? passwordCtr = null,
+    Object? nickNameCtr = null,
+    Object? firstNameCtr = null,
+    Object? dobCtr = null,
   }) {
     return _then(_$_AuthState(
       isLogin: null == isLogin
           ? _value.isLogin
           : isLogin // ignore: cast_nullable_to_non_nullable
               as bool,
-      userType: freezed == userType
+      userType: null == userType
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       isBusy: null == isBusy
           ? _value.isBusy
           : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
+      emailCtr: null == emailCtr
+          ? _value.emailCtr
+          : emailCtr // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
+      passwordCtr: null == passwordCtr
+          ? _value.passwordCtr
+          : passwordCtr // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
+      nickNameCtr: null == nickNameCtr
+          ? _value.nickNameCtr
+          : nickNameCtr // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
+      firstNameCtr: null == firstNameCtr
+          ? _value.firstNameCtr
+          : firstNameCtr // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
+      dobCtr: null == dobCtr
+          ? _value.dobCtr
+          : dobCtr // ignore: cast_nullable_to_non_nullable
+              as TextEditingController,
     ));
   }
 }
@@ -700,18 +1071,35 @@ class __$$_AuthStateCopyWithImpl<$Res>
 
 class _$_AuthState implements _AuthState {
   const _$_AuthState(
-      {required this.isLogin, this.userType, required this.isBusy});
+      {required this.isLogin,
+      required this.userType,
+      required this.isBusy,
+      required this.emailCtr,
+      required this.passwordCtr,
+      required this.nickNameCtr,
+      required this.firstNameCtr,
+      required this.dobCtr});
 
   @override
   final bool isLogin;
   @override
-  final String? userType;
+  final String userType;
   @override
   final bool isBusy;
+  @override
+  final TextEditingController emailCtr;
+  @override
+  final TextEditingController passwordCtr;
+  @override
+  final TextEditingController nickNameCtr;
+  @override
+  final TextEditingController firstNameCtr;
+  @override
+  final TextEditingController dobCtr;
 
   @override
   String toString() {
-    return 'AuthState(isLogin: $isLogin, userType: $userType, isBusy: $isBusy)';
+    return 'AuthState(isLogin: $isLogin, userType: $userType, isBusy: $isBusy, emailCtr: $emailCtr, passwordCtr: $passwordCtr, nickNameCtr: $nickNameCtr, firstNameCtr: $firstNameCtr, dobCtr: $dobCtr)';
   }
 
   @override
@@ -722,11 +1110,21 @@ class _$_AuthState implements _AuthState {
             (identical(other.isLogin, isLogin) || other.isLogin == isLogin) &&
             (identical(other.userType, userType) ||
                 other.userType == userType) &&
-            (identical(other.isBusy, isBusy) || other.isBusy == isBusy));
+            (identical(other.isBusy, isBusy) || other.isBusy == isBusy) &&
+            (identical(other.emailCtr, emailCtr) ||
+                other.emailCtr == emailCtr) &&
+            (identical(other.passwordCtr, passwordCtr) ||
+                other.passwordCtr == passwordCtr) &&
+            (identical(other.nickNameCtr, nickNameCtr) ||
+                other.nickNameCtr == nickNameCtr) &&
+            (identical(other.firstNameCtr, firstNameCtr) ||
+                other.firstNameCtr == firstNameCtr) &&
+            (identical(other.dobCtr, dobCtr) || other.dobCtr == dobCtr));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLogin, userType, isBusy);
+  int get hashCode => Object.hash(runtimeType, isLogin, userType, isBusy,
+      emailCtr, passwordCtr, nickNameCtr, firstNameCtr, dobCtr);
 
   @JsonKey(ignore: true)
   @override
@@ -738,15 +1136,30 @@ class _$_AuthState implements _AuthState {
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
       {required final bool isLogin,
-      final String? userType,
-      required final bool isBusy}) = _$_AuthState;
+      required final String userType,
+      required final bool isBusy,
+      required final TextEditingController emailCtr,
+      required final TextEditingController passwordCtr,
+      required final TextEditingController nickNameCtr,
+      required final TextEditingController firstNameCtr,
+      required final TextEditingController dobCtr}) = _$_AuthState;
 
   @override
   bool get isLogin;
   @override
-  String? get userType;
+  String get userType;
   @override
   bool get isBusy;
+  @override
+  TextEditingController get emailCtr;
+  @override
+  TextEditingController get passwordCtr;
+  @override
+  TextEditingController get nickNameCtr;
+  @override
+  TextEditingController get firstNameCtr;
+  @override
+  TextEditingController get dobCtr;
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>

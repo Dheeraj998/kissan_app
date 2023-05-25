@@ -19,6 +19,7 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final ctr = context.read<AuthBloc>();
     return Scaffold(
       appBar: AppBar(
         title: const KsText(text: "Register"),
@@ -26,6 +27,7 @@ class RegisterScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) {
+            print("${state.isBusy}--------------------------------------");
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Column(
@@ -55,8 +57,7 @@ class RegisterScreen extends StatelessWidget {
                   sized0hx50,
                   sized0hx10,
                   KsTextField(
-                    textEditingController:
-                        context.read<AuthBloc>().firstNameCtr,
+                    textEditingController: state.firstNameCtr,
                     hinText: "First name",
                     labelText: "firsname*",
                   ),
@@ -68,28 +69,36 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   sized0hx20,
                   KsTextField(
-                    textEditingController: context.read<AuthBloc>().dobCtr,
+                    textEditingController: state.dobCtr,
                     hinText: "Date of birth",
                     labelText: "date of birth*",
                   ),
                   sized0hx30,
                   KsButton(
                     buttonText: "Register",
+                    isBusy: state.isBusy,
                     onTap: () {
-                      if (context.read<AuthBloc>().firstNameCtr.text.isEmpty ||
-                          context.read<AuthBloc>().dobCtr.text.isEmpty) {
+                      if (state.firstNameCtr.text.isEmpty ||
+                          state.dobCtr.text.isEmpty) {
                         CustomSnackbar.show(
                             context, "please fill mandatory fields");
                         return;
                       }
-                      AuthMethods().signupUser(
-                          email: context.read<AuthBloc>().emailCtr.text,
-                          password: context.read<AuthBloc>().passwordCtr.text,
-                          nickname: context.read<AuthBloc>().nickNameCtr.text,
-                          firstname: context.read<AuthBloc>().firstNameCtr.text,
-                          lastname: lastnameCtr.text,
-                          type: context.read<AuthBloc>().userType,
-                          dob: context.read<AuthBloc>().dobCtr.text);
+                      // AuthMethods().signupUser(
+                      //     email: context.read<AuthBloc>().emailCtr.text,
+                      //     password: context.read<AuthBloc>().passwordCtr.text,
+                      //     nickname: context.read<AuthBloc>().nickNameCtr.text,
+                      //     firstname: context.read<AuthBloc>().firstNameCtr.text,
+                      //     lastname: lastnameCtr.text,
+                      //     type: context.read<AuthBloc>().userType,
+                      //     dob: context.read<AuthBloc>().dobCtr.text);
+                      context.read<AuthBloc>().add(AuthEvent.signupUserEvent(
+                          email: state.emailCtr.text,
+                          password: state.passwordCtr.text,
+                          type: state.userType,
+                          firstname: state.firstNameCtr.text,
+                          dob: state.dobCtr.text));
+                      print("${state.isBusy}@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
                     },
                   )
                 ],

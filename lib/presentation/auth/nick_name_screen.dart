@@ -43,14 +43,20 @@ class NickNameScreen extends StatelessWidget {
               sized0hx30,
               sized0hx05,
               KsTextField(
-                  textEditingController: context.read<AuthBloc>().nickNameCtr,
+                  textEditingController:
+                      context.read<AuthBloc>().state.nickNameCtr,
                   hinText: "",
                   labelText: "nickName"),
               sized0hx30,
               KsButton(
                 buttonText: "Take me in",
                 onTap: () {
-                  if (context.read<AuthBloc>().nickNameCtr.text.isNotEmpty) {
+                  if (context
+                      .read<AuthBloc>()
+                      .state
+                      .nickNameCtr
+                      .text
+                      .isNotEmpty) {
                     Navigator.pushNamed(context, RouteName.registerScreen);
                   } else {
                     CustomSnackbar.show(context, "Please enter your nick name");

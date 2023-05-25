@@ -59,8 +59,8 @@ class KsButton extends StatelessWidget {
           child: Center(
             child: isBusy == true
                 ? const SizedBox(
-                    height: 20,
-                    width: 20,
+                    height: 25,
+                    width: 25,
                     child: CircularProgressIndicator(),
                   )
                 : KsText(
