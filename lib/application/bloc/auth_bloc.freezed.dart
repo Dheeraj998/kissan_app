@@ -906,6 +906,10 @@ mixin _$AuthState {
   bool get isLogin => throw _privateConstructorUsedError;
   String get userType => throw _privateConstructorUsedError;
   bool get isBusy => throw _privateConstructorUsedError;
+  Box<dynamic>? get box => throw _privateConstructorUsedError;
+  FirebaseAuthException? get authException =>
+      throw _privateConstructorUsedError;
+  UserModel? get userModel => throw _privateConstructorUsedError;
   TextEditingController get emailCtr => throw _privateConstructorUsedError;
   TextEditingController get passwordCtr => throw _privateConstructorUsedError;
   TextEditingController get nickNameCtr => throw _privateConstructorUsedError;
@@ -926,6 +930,9 @@ abstract class $AuthStateCopyWith<$Res> {
       {bool isLogin,
       String userType,
       bool isBusy,
+      Box<dynamic>? box,
+      FirebaseAuthException? authException,
+      UserModel? userModel,
       TextEditingController emailCtr,
       TextEditingController passwordCtr,
       TextEditingController nickNameCtr,
@@ -949,6 +956,9 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? isLogin = null,
     Object? userType = null,
     Object? isBusy = null,
+    Object? box = freezed,
+    Object? authException = freezed,
+    Object? userModel = freezed,
     Object? emailCtr = null,
     Object? passwordCtr = null,
     Object? nickNameCtr = null,
@@ -968,6 +978,18 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
           ? _value.isBusy
           : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
+      box: freezed == box
+          ? _value.box
+          : box // ignore: cast_nullable_to_non_nullable
+              as Box<dynamic>?,
+      authException: freezed == authException
+          ? _value.authException
+          : authException // ignore: cast_nullable_to_non_nullable
+              as FirebaseAuthException?,
+      userModel: freezed == userModel
+          ? _value.userModel
+          : userModel // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
       emailCtr: null == emailCtr
           ? _value.emailCtr
           : emailCtr // ignore: cast_nullable_to_non_nullable
@@ -1003,6 +1025,9 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
       {bool isLogin,
       String userType,
       bool isBusy,
+      Box<dynamic>? box,
+      FirebaseAuthException? authException,
+      UserModel? userModel,
       TextEditingController emailCtr,
       TextEditingController passwordCtr,
       TextEditingController nickNameCtr,
@@ -1024,6 +1049,9 @@ class __$$_AuthStateCopyWithImpl<$Res>
     Object? isLogin = null,
     Object? userType = null,
     Object? isBusy = null,
+    Object? box = freezed,
+    Object? authException = freezed,
+    Object? userModel = freezed,
     Object? emailCtr = null,
     Object? passwordCtr = null,
     Object? nickNameCtr = null,
@@ -1043,6 +1071,18 @@ class __$$_AuthStateCopyWithImpl<$Res>
           ? _value.isBusy
           : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
+      box: freezed == box
+          ? _value.box
+          : box // ignore: cast_nullable_to_non_nullable
+              as Box<dynamic>?,
+      authException: freezed == authException
+          ? _value.authException
+          : authException // ignore: cast_nullable_to_non_nullable
+              as FirebaseAuthException?,
+      userModel: freezed == userModel
+          ? _value.userModel
+          : userModel // ignore: cast_nullable_to_non_nullable
+              as UserModel?,
       emailCtr: null == emailCtr
           ? _value.emailCtr
           : emailCtr // ignore: cast_nullable_to_non_nullable
@@ -1074,6 +1114,9 @@ class _$_AuthState implements _AuthState {
       {required this.isLogin,
       required this.userType,
       required this.isBusy,
+      this.box,
+      this.authException,
+      this.userModel,
       required this.emailCtr,
       required this.passwordCtr,
       required this.nickNameCtr,
@@ -1087,6 +1130,12 @@ class _$_AuthState implements _AuthState {
   @override
   final bool isBusy;
   @override
+  final Box<dynamic>? box;
+  @override
+  final FirebaseAuthException? authException;
+  @override
+  final UserModel? userModel;
+  @override
   final TextEditingController emailCtr;
   @override
   final TextEditingController passwordCtr;
@@ -1099,7 +1148,7 @@ class _$_AuthState implements _AuthState {
 
   @override
   String toString() {
-    return 'AuthState(isLogin: $isLogin, userType: $userType, isBusy: $isBusy, emailCtr: $emailCtr, passwordCtr: $passwordCtr, nickNameCtr: $nickNameCtr, firstNameCtr: $firstNameCtr, dobCtr: $dobCtr)';
+    return 'AuthState(isLogin: $isLogin, userType: $userType, isBusy: $isBusy, box: $box, authException: $authException, userModel: $userModel, emailCtr: $emailCtr, passwordCtr: $passwordCtr, nickNameCtr: $nickNameCtr, firstNameCtr: $firstNameCtr, dobCtr: $dobCtr)';
   }
 
   @override
@@ -1111,6 +1160,11 @@ class _$_AuthState implements _AuthState {
             (identical(other.userType, userType) ||
                 other.userType == userType) &&
             (identical(other.isBusy, isBusy) || other.isBusy == isBusy) &&
+            (identical(other.box, box) || other.box == box) &&
+            (identical(other.authException, authException) ||
+                other.authException == authException) &&
+            (identical(other.userModel, userModel) ||
+                other.userModel == userModel) &&
             (identical(other.emailCtr, emailCtr) ||
                 other.emailCtr == emailCtr) &&
             (identical(other.passwordCtr, passwordCtr) ||
@@ -1123,8 +1177,19 @@ class _$_AuthState implements _AuthState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLogin, userType, isBusy,
-      emailCtr, passwordCtr, nickNameCtr, firstNameCtr, dobCtr);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLogin,
+      userType,
+      isBusy,
+      box,
+      authException,
+      userModel,
+      emailCtr,
+      passwordCtr,
+      nickNameCtr,
+      firstNameCtr,
+      dobCtr);
 
   @JsonKey(ignore: true)
   @override
@@ -1138,6 +1203,9 @@ abstract class _AuthState implements AuthState {
       {required final bool isLogin,
       required final String userType,
       required final bool isBusy,
+      final Box<dynamic>? box,
+      final FirebaseAuthException? authException,
+      final UserModel? userModel,
       required final TextEditingController emailCtr,
       required final TextEditingController passwordCtr,
       required final TextEditingController nickNameCtr,
@@ -1150,6 +1218,12 @@ abstract class _AuthState implements AuthState {
   String get userType;
   @override
   bool get isBusy;
+  @override
+  Box<dynamic>? get box;
+  @override
+  FirebaseAuthException? get authException;
+  @override
+  UserModel? get userModel;
   @override
   TextEditingController get emailCtr;
   @override

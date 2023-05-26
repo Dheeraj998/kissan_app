@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kisan_app/domain/auth/auth_respository.dart';
+import 'package:kisan_app/models/user_model.dart';
 
 import '../../core/utils/custom_print.dart';
 
@@ -38,22 +43,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     //   emit(state.copyWith(isBusy: true));
     // });
 
-    on<_SignupUserEvent>((event, emit) {
+    on<_SignupUserEvent>((event, emit) async {
       // print(state.isBusy);
-      emit(state.copyWith(isBusy: true));
-      print('-------------------------------------');
-      // print(state.isBusy);
-      // final res = authRepository.signupUser(
-      //     email: event.email,
-      //     password: event.password,
-      //     type: event.type,
-      //     firstname: event.firstname,
-      //     dob: event.dob,
-      //     lastname: event.lastname,
-      //     nickname: event.nickname);
-      emit(state.copyWith(isBusy: false));
 
-      // customPrint(res);
+      emit(state.copyWith(isBusy: true));
+      // print(state.isBusy);
+      final res = await authRepository.signupUser(
+          email: event.email,
+          password: event.password,
+          type: event.type,
+          firstname: event.firstname,
+          dob: event.dob,
+          lastname: event.lastname,
+          nickname: event.nickname);
+      emit(state.copyWith(isBusy: false));
+      var resp;
+      res.fold((l) {
+        resp = state.copyWith(authException: l);
+      }, (r) async {
+        final box = await Hive.openBox('user');
+        box.put('user', jsonEncode(r.toJson()));
+        resp = state.copyWith(userModel: r);
+      });
+      emit(resp);
+      customPrint(res);
     });
   }
 }

@@ -138,7 +138,7 @@ class SiginInScreen extends StatelessWidget {
                                         return;
                                       }
                                       Navigator.of(context)
-                                          .pushNamed(RouteName.nickNameScreeen);
+                                          .pushNamed(RouteName.registerScreen);
                                     } else {
                                       AuthMethods().loginUser(
                                           context: context,

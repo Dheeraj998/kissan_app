@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kisan_app/core/utils/custom_print.dart';
 import 'package:kisan_app/domain/auth/auth_respository.dart';
+import 'package:hive/hive.dart';
 
 import '../../models/user_model.dart';
 
@@ -14,7 +15,7 @@ class AuthImpl implements AuthRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
-  Future<Either<FirebaseAuthException, UserCredential>> signupUser(
+  Future<Either<FirebaseAuthException, UserModel>> signupUser(
       {required String email,
       required String password,
       String? nickname,
@@ -45,12 +46,19 @@ class AuthImpl implements AuthRepository {
           .get();
       UserModel regUserModel = UserModel.fromSnap(registeredUser);
       print(registeredUser);
-      return Right(cred);
+
+      return Right(regUserModel);
     } on FirebaseAuthException catch (e) {
-      throw Left(e);
+      return Left(e);
     } catch (e) {
       print(e.toString());
       throw Left(e);
     }
+  }
+
+  @override
+  Future<Either<FirebaseAuthException, UserCredential>> loginUser() {
+    // TODO: implement loginUser
+    throw UnimplementedError();
   }
 }

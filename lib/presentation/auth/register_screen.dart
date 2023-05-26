@@ -24,11 +24,15 @@ class RegisterScreen extends StatelessWidget {
       appBar: AppBar(
         title: const KsText(text: "Register"),
       ),
-      body: SingleChildScrollView(
-        child: BlocBuilder<AuthBloc, AuthState>(
-          builder: (context, state) {
-            print("${state.isBusy}--------------------------------------");
-            return Padding(
+      body: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state.authException != null) {
+            CustomSnackbar.show(context, state.authException?.message ?? "");
+          }
+        },
+        builder: (context, state) {
+          return SingleChildScrollView(
+            child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 children: [
@@ -70,8 +74,8 @@ class RegisterScreen extends StatelessWidget {
                   sized0hx20,
                   KsTextField(
                     textEditingController: state.dobCtr,
-                    hinText: "Date of birth",
-                    labelText: "date of birth*",
+                    hinText: "mobile number",
+                    labelText: "mobile number*",
                   ),
                   sized0hx30,
                   KsButton(
@@ -98,14 +102,13 @@ class RegisterScreen extends StatelessWidget {
                           type: state.userType,
                           firstname: state.firstNameCtr.text,
                           dob: state.dobCtr.text));
-                      print("${state.isBusy}@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
                     },
                   )
                 ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
