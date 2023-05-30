@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kisan_app/application/bloc/auth_bloc.dart';
+import 'package:kisan_app/core/route/route_name.dart';
+import 'package:kisan_app/core/services/custom_print.dart';
 import 'package:kisan_app/core/utils/constant.dart';
 import 'package:kisan_app/firebase_services/auth_methods.dart';
 import 'package:kisan_app/presentation/auth/signin_screen.dart';
@@ -28,6 +30,9 @@ class RegisterScreen extends StatelessWidget {
         listener: (context, state) {
           if (state.authException != null) {
             CustomSnackbar.show(context, state.authException?.message ?? "");
+          } else if (state.userModel != null) {
+            customPrint("heiii");
+            Navigator.of(context).pushReplacementNamed(RouteName.mainScreen);
           }
         },
         builder: (context, state) {
@@ -76,6 +81,7 @@ class RegisterScreen extends StatelessWidget {
                     textEditingController: state.dobCtr,
                     hinText: "mobile number",
                     labelText: "mobile number*",
+                    textInputType: TextInputType.number,
                   ),
                   sized0hx30,
                   KsButton(
@@ -101,7 +107,7 @@ class RegisterScreen extends StatelessWidget {
                           password: state.passwordCtr.text,
                           type: state.userType,
                           firstname: state.firstNameCtr.text,
-                          dob: state.dobCtr.text));
+                          mobile: state.dobCtr.text));
                     },
                   )
                 ],

@@ -42,15 +42,16 @@ class KsButton extends StatelessWidget {
         width: double.infinity,
         height: height,
         decoration: BoxDecoration(
-          color: cPrimaryColor,
+          color: outerBorederColor ?? cPrimaryColor,
           borderRadius: BorderRadius.circular(12.r),
-          border:
-              Border.all(color: cPrimaryColor, width: outerBorderWidth ?? 1),
+          border: Border.all(
+              color: outerBorederColor ?? cPrimaryColor,
+              width: outerBorderWidth ?? 1),
         ),
         child: Container(
           height: 52.h,
           decoration: BoxDecoration(
-            color: cPrimaryColor,
+            color: buttonColor ?? cPrimaryColor,
             borderRadius: BorderRadius.circular(12.r),
             border: Border.all(
                 color: innerBorderColor ?? cWhite,
@@ -65,7 +66,7 @@ class KsButton extends StatelessWidget {
                   )
                 : KsText(
                     text: buttonText,
-                    fontColor: cWhite,
+                    fontColor: buttonTextColor ?? cWhite,
                     fontSize: buttonFontSize,
                     fontWeight: buttonTextWeight,
                   ),

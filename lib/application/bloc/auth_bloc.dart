@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -24,7 +25,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   // TextEditingController firstNameCtr = TextEditingController();
   // TextEditingController dobCtr = TextEditingController();
   AuthBloc(this.authRepository) : super(AuthState.initial()) {
-    on<_Started>((event, emit) {});
+    on<_Started>((event, emit) async {
+      final box = await Hive.openBox('user');
+      if (state.userModel != null) {
+        var user = UserModel.fromJson(jsonDecode(box.get('user')));
+        emit(state.copyWith(userModel: user));
+      }
+    });
     on<_IsLogin>((event, emit) {
       if (event.type == true) {
         emit(state.copyWith(isLogin: true));
@@ -53,7 +60,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           password: event.password,
           type: event.type,
           firstname: event.firstname,
-          dob: event.dob,
+          mobile: event.mobile,
           lastname: event.lastname,
           nickname: event.nickname);
       emit(state.copyWith(isBusy: false));
@@ -64,9 +71,36 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final box = await Hive.openBox('user');
         box.put('user', jsonEncode(r.toJson()));
         resp = state.copyWith(userModel: r);
+
+        customPrint(state.userModel);
       });
+      // customPrint(resp.toString());
+      // customPrint("--------------------------------- $resp");
       emit(resp);
-      customPrint(res);
+      resp = null;
+    });
+
+    on<_LoginUserEvent>((event, emit) async {
+      emit(state.copyWith(isBusy: true));
+      final Either<FirebaseAuthException, UserModel> res =
+          await authRepository.loginUser(
+        email: event.email,
+        password: event.password,
+      );
+
+      final _state = res.fold((l) => state.copyWith(authException: l),
+          (r) => state.copyWith(userModel: r, authException: null));
+
+      emit(_state);
+      emit(state.copyWith(isBusy: false));
+    });
+
+    on<_SignOutEvent>((event, emit) async {
+      emit(state.copyWith(isBusy: true));
+      final box = await Hive.openBox('user');
+      Hive.box('user').clear();
+
+      emit(state.copyWith(userModel: null, isBusy: false));
     });
   }
 }

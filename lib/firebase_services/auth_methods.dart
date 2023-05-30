@@ -16,7 +16,7 @@ class AuthMethods {
       String? lastname,
       required String type,
       required String firstname,
-      required String dob}) async {
+      required String mobile}) async {
     try {
       UserCredential cred = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -25,7 +25,7 @@ class AuthMethods {
           email: email,
           uid: cred.user!.uid,
           firstName: firstname,
-          dob: dob,
+          mobile: mobile,
           type: type,
           lastName: lastname,
           nickName: nickname);

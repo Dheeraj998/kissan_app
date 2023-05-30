@@ -25,7 +25,17 @@ class SiginInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFE1DDDD),
-      body: BlocBuilder<AuthBloc, AuthState>(
+      body: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state.authException != null) {
+            return CustomSnackbar.show(
+                context, state.authException?.message ?? "");
+          }
+          if (state.userModel != null) {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                RouteName.mainScreen, (route) => false);
+          }
+        },
         builder: (context, state) {
           return Column(
             children: [
@@ -121,6 +131,7 @@ class SiginInScreen extends StatelessWidget {
                                 sized0hx40,
                                 KsButton(
                                   buttonText: "Login",
+                                  isBusy: state.isBusy && state.isLogin,
                                   onTap: () {
                                     if (state.isLogin == false) {
                                       confrmPasswrodFocusNode.unfocus();
@@ -140,10 +151,15 @@ class SiginInScreen extends StatelessWidget {
                                       Navigator.of(context)
                                           .pushNamed(RouteName.registerScreen);
                                     } else {
-                                      AuthMethods().loginUser(
-                                          context: context,
-                                          email: state.emailCtr.text,
-                                          password: state.passwordCtr.text);
+                                      // AuthMethods().loginUser(
+                                      //     context: context,
+                                      //     email: state.emailCtr.text,
+                                      //     password: state.passwordCtr.text);
+                                      context.read<AuthBloc>().add(
+                                          AuthEvent.loginUser(
+                                              email: state.emailCtr.text,
+                                              password:
+                                                  state.passwordCtr.text));
                                     }
                                   },
                                   innerBorderColor: cPrimaryColor,

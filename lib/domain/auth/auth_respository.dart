@@ -10,7 +10,10 @@ abstract class AuthRepository {
       String? lastname,
       required String type,
       required String firstname,
-      required String dob});
+      required String mobile});
 
-  Future<Either<FirebaseAuthException, UserCredential>> loginUser();
+  Future<Either<FirebaseAuthException, UserModel>> loginUser({
+    required String email,
+    required String password,
+  });
 }

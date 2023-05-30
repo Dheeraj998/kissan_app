@@ -15,5 +15,12 @@ class AuthEvent with _$AuthEvent {
       String? lastname,
       required String type,
       required String firstname,
-      required String dob}) = _SignupUserEvent;
+      required String mobile}) = _SignupUserEvent;
+
+  const factory AuthEvent.loginUser({
+    required String email,
+    required String password,
+  }) = _LoginUserEvent;
+
+  const factory AuthEvent.signOutEvent() = _SignOutEvent;
 }
