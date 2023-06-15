@@ -31,7 +31,10 @@ class KsTextField extends StatelessWidget {
       keyboardType: textInputType,
       decoration: InputDecoration(
           isDense: isDense,
+          fillColor: cWhite,
+          filled: true,
           prefixIcon: prefixIcon,
+          floatingLabelBehavior: FloatingLabelBehavior.always,
           label: KsText(
             text: labelText ?? "",
             fontColor: cBlack,
@@ -41,7 +44,7 @@ class KsTextField extends StatelessWidget {
               borderSide: const BorderSide(color: Color(0xFF7C7C7C))),
           hintText: hinText,
           contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-          hintStyle: const TextStyle(color: cBlack),
+          hintStyle: const TextStyle(color: cBlack, fontSize: 13),
           suffixIcon: Icon(trailingIcon)),
     );
   }

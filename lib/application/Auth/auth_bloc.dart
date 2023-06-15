@@ -27,10 +27,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this.authRepository) : super(AuthState.initial()) {
     on<_Started>((event, emit) async {
       final box = await Hive.openBox('user');
-      if (state.userModel != null) {
-        var user = UserModel.fromJson(jsonDecode(box.get('user')));
-        emit(state.copyWith(userModel: user));
-      }
+      // if (state.userModel != null) {
+      var user = UserModel.fromJson(jsonDecode(box.get('user')));
+      emit(state.copyWith(userModel: user));
+      // }
     });
     on<_IsLogin>((event, emit) {
       if (event.type == true) {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kisan_app/application/bloc/auth_bloc.dart';
 import 'package:kisan_app/core/route/route_name.dart';
 import 'package:kisan_app/core/services/custom_print.dart';
 import 'package:kisan_app/core/utils/constant.dart';
@@ -12,6 +11,8 @@ import 'package:kisan_app/presentation/widgets/ks_button.dart';
 import 'package:kisan_app/presentation/widgets/ks_text.dart';
 import 'package:kisan_app/presentation/widgets/ks_textfield.dart';
 import 'package:kisan_app/presentation/widgets/ks_text.dart';
+
+import '../../application/Auth/auth_bloc.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kisan_app/core/route/route_name.dart';
 import 'package:kisan_app/core/utils/constant.dart';
 import 'package:kisan_app/core/utils/themes.dart';
 import 'package:kisan_app/presentation/widgets/ks_text.dart';
 import 'package:kisan_app/presentation/widgets/ks_textfield.dart';
+
+import '../../application/Auth/auth_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -19,6 +23,24 @@ class HomeScreen extends StatelessWidget {
           fontColor: cBlack,
         ),
         leading: SizedBox(),
+        actions: [
+          (context.watch<AuthBloc>().state.userModel?.type == 'Seller')
+              ? Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(RouteName.addProductScreen);
+                    },
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.black,
+                    ),
+                  ),
+                )
+              : const SizedBox()
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),

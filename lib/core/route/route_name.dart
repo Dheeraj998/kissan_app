@@ -6,4 +6,7 @@ class RouteName {
   static const registerScreen = '/register';
   static const homeSCreen = '/home';
   static const mainScreen = '/mainScreen';
+
+  //seller
+  static const addProductScreen = 'add-product';
 }

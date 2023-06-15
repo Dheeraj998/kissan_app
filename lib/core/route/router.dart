@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kisan_app/core/route/route_name.dart';
+import 'package:kisan_app/presentation/Seller/add_product.dart';
 import 'package:kisan_app/presentation/auth/nick_name_screen.dart';
 import 'package:kisan_app/presentation/auth/register_screen.dart';
 import 'package:kisan_app/presentation/auth/signin_screen.dart';
@@ -29,6 +30,10 @@ class AppRouter {
       case RouteName.mainScreen:
         return MaterialPageRoute(
           builder: (context) => MainScreen(),
+        );
+      case RouteName.addProductScreen:
+        return MaterialPageRoute(
+          builder: (context) => AddProductScreen(),
         );
       default:
         return MaterialPageRoute(

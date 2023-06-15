@@ -11,7 +11,7 @@ import 'package:kisan_app/presentation/widgets/ks_button.dart';
 import 'package:kisan_app/presentation/widgets/ks_text.dart';
 import 'package:kisan_app/presentation/widgets/ks_textfield.dart';
 
-import '../../application/bloc/auth_bloc.dart';
+import '../../application/Auth/auth_bloc.dart';
 
 class NickNameScreen extends StatelessWidget {
   NickNameScreen({super.key});

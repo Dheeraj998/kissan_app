@@ -3,7 +3,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kisan_app/application/bloc/auth_bloc.dart';
 import 'package:kisan_app/core/route/route_name.dart';
 import 'package:kisan_app/core/route/router.dart';
 import 'package:kisan_app/core/utils/app_images.dart';
@@ -15,6 +14,8 @@ import 'package:kisan_app/presentation/widgets/ks_button.dart';
 import 'package:kisan_app/presentation/widgets/ks_text.dart';
 
 import 'package:kisan_app/presentation/widgets/ks_textfield.dart';
+
+import '../../application/Auth/auth_bloc.dart';
 
 class SiginInScreen extends StatelessWidget {
   SiginInScreen({super.key});

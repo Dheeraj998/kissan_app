@@ -1,15 +1,16 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:kisan_app/application/bloc/auth_bloc.dart';
 import 'package:kisan_app/core/route/route_name.dart';
 import 'package:kisan_app/core/route/router.dart';
 import 'package:kisan_app/core/utils/themes.dart';
 import 'package:kisan_app/firebase_options.dart';
 
+import 'application/Auth/auth_bloc.dart';
 import 'core/injection/injectable.dart';
 
 ///////////////////////////////////////////////////////////////
@@ -20,7 +21,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependancies();
   await Hive.initFlutter();
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -43,13 +43,18 @@ class MyApp extends StatelessWidget {
       child: ScreenUtilInit(
           designSize: const Size(360, 800),
           builder: (context, snapshot) {
-            return MaterialApp(
-              title: 'kisan app',
-              theme: Themes.appTheme,
-              debugShowCheckedModeBanner: false,
-              onGenerateRoute: AppRouter.generateRoute,
-              home: const LoaderScreen(),
-            );
+            return BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+              return MaterialApp(
+                title: 'kisan app',
+                theme: Themes.appTheme,
+                debugShowCheckedModeBanner: false,
+                onGenerateRoute: AppRouter.generateRoute,
+                home: const LoaderScreen(),
+                // initialRoute: state.userModel != null
+                //     ? RouteName.mainScreen
+                //     : RouteName.signinScreen,
+              );
+            });
           }),
     );
   }
@@ -62,13 +67,13 @@ class LoaderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        print("heree");
+        log("inside bloc-----------------------------------");
         if (state.userModel != null) {
-          print("heree1");
+          log("inside if  -----------------------------------");
 
-          return Navigator.of(context).pushNamed(RouteName.mainScreen);
+          Navigator.of(context).pushNamed(RouteName.mainScreen);
         } else {
-          print("heree2");
+          log("inside else -----------------------------------");
 
           Navigator.of(context).pushNamed(RouteName.signinScreen);
         }
