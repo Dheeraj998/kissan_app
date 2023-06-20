@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kisan_app/application/Home/home_bloc.dart';
+import 'package:kisan_app/core/injection/injectable.dart';
+import 'package:kisan_app/core/services/image_picker.dart';
 import 'package:kisan_app/core/utils/constant.dart';
 import 'package:kisan_app/core/utils/themes.dart';
+import 'package:kisan_app/domain/home/home_repository.dart';
 import 'package:kisan_app/presentation/widgets/ks_button.dart';
 import 'package:kisan_app/presentation/widgets/ks_text.dart';
 import 'package:kisan_app/presentation/widgets/ks_textfield.dart';
@@ -52,9 +58,26 @@ class _AddProductScreenState extends State<AddProductScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               sized0hx50,
-              const CircleAvatar(
-                radius: 50,
-                backgroundColor: cPrimaryColor,
+              BlocBuilder<HomeBloc, HomeState>(
+                builder: (context, state) {
+                  return InkWell(
+                    onTap: () {
+                      getIt<ImagePickerClass>().imagePicker(context);
+                    },
+                    child: Container(
+                      height: 180.h,
+                      decoration: BoxDecoration(
+                          color: Colors.blueGrey.withOpacity(.1),
+                          borderRadius: BorderRadius.circular(15.r)),
+                      child: state.image != null
+                          ? Image.file(state.image!)
+                          : const Center(
+                              child:
+                                  KsText(text: "Please Add Your Product Image"),
+                            ),
+                    ),
+                  );
+                },
               ),
               sized0hx50,
               KsTextField(
@@ -63,17 +86,34 @@ class _AddProductScreenState extends State<AddProductScreen> {
               sized0hx20,
               KsTextField(
                   textEditingController: productPricePerCtr,
+                  textInputType: TextInputType.number,
                   hinText: "Enter Price/kg"),
               sized0hx20,
               KsTextField(
                   textEditingController: productActualPriceCtr,
+                  textInputType: TextInputType.number,
                   hinText: "Enter Actual Price"),
               sized0hx20,
               KsTextField(
                   textEditingController: productOfferPriceCtr,
+                  textInputType: TextInputType.number,
                   hinText: "Enter Offer Price"),
               sized0hx50,
-              KsButton(buttonText: "Add product")
+              BlocBuilder<HomeBloc, HomeState>(
+                builder: (context, state) {
+                  return KsButton(
+                    buttonText: "Add product",
+                    onTap: () {
+                      getIt<HomeRepository>().uploadPost(
+                          productNameCtr.text,
+                          state.image,
+                          productPricePerCtr.text,
+                          productActualPriceCtr.text,
+                          productOfferPriceCtr.text);
+                    },
+                  );
+                },
+              )
             ],
           ),
         ),

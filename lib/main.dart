@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:kisan_app/application/Home/home_bloc.dart';
 import 'package:kisan_app/core/route/route_name.dart';
 import 'package:kisan_app/core/route/router.dart';
 import 'package:kisan_app/core/utils/themes.dart';
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               getIt<AuthBloc>()..add(const AuthEvent.started()),
-        )
+        ),
+        BlocProvider(create: (context) => getIt<HomeBloc>())
       ],
       child: ScreenUtilInit(
           designSize: const Size(360, 800),
